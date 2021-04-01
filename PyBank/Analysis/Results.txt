@@ -1,0 +1,7 @@
+Financial Analysis of My Company
+-----------------------------
+Total Months: 86
+Total Profits: $671099.00
+Average Change: $7803.48
+Greatest Increase In Profits: Feb-2012 ($1926159.00)
+Greatest Decrease In Profits: Sep-2013 ($-2196167.00)
