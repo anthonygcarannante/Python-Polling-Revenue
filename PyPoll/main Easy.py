@@ -13,12 +13,18 @@ with open(output_path, 'w', newline='') as writetxt:
 
         # Print Header and Data for sanity check
         csv_header = next(csvreader)
-        #print(f"CSV Header: {csv_header}"
+        #print(f"CSV Header: {csv_header}")
+        
+        # Define Variables
+        voter_count = 0
+        khan_count = 0
+        correy_count = 0
+        li_count = 0
+        tooley_count = 0
 
         # Iterate through each row in csv file.
         for row in csvreader:
             voter_count += 1
-            if row[2] == poll.keys():
             
             # Count votes for each candidate
             if row[2] == 'Khan':
@@ -33,7 +39,10 @@ with open(output_path, 'w', newline='') as writetxt:
         candidates = {''}
 
         # Calculate and format percentage of votes per candidate
-
+        khan_percent = "{:.2%}".format(khan_count / voter_count)
+        correy_percent = "{:.2%}".format(correy_count / voter_count)
+        li_percent = "{:.2%}".format(li_count / voter_count)
+        tooley_percent = "{:.2%}".format(tooley_count / voter_count)
 
         # Printing in terminal
         print('!!! ELECTION RESULTS !!!')
