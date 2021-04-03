@@ -42,7 +42,6 @@ with open(output_path, 'w', newline='') as writetxt:
         
         # Store in a dictionary
         poll_results = {"Candidates":candidates,"Votes":votes,"Percents,":percents}
-        print(poll_results)
 
         # Calculate winner based on max number of votes in the Dictionary
         winner = max(poll, key=poll.get)
