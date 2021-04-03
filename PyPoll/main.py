@@ -15,45 +15,50 @@ with open(output_path, 'w', newline='') as writetxt:
         csv_header = next(csvreader)
         #print(f"CSV Header: {csv_header}"
 
+        # Initialize Variables
+        voter_count = 0
+        poll = {}
+        
         # Iterate through each row in csv file.
         for row in csvreader:
-            voter_count += 1
-            if row[2] == poll.keys():
-            
-            # Count votes for each candidate
-            if row[2] == 'Khan':
-                khan_count += 1
-            elif row[2] == 'Correy':
-                correy_count += 1
-            elif row[2] == 'Li':
-                li_count += 1
-            elif row[2] == 'O\'Tooley':
-                tooley_count += 1
+            voter_count += 1 
+            # Check if the voter exists as a key in the dictionary, if it does, add one to its vote count. if not, add candidate as new key
+            if row[2] in poll.keys():
+                poll[row[2]] += 1
+            else:
+                poll[row[2]] = 1
 
-        candidates = {''}
+        # Store all of these values into lists for easy accessing
+        candidates = []
+        votes = []
+        percents = []
 
-        # Calculate and format percentage of votes per candidate
+        # Append dictionary items to new lists
+        for key, value in poll.items():
+            candidates.append(key)
+            votes.append(value)
+            percents.append("{:.2%}".format(value/voter_count))
 
+        # Calculate winner based on max number of votes in the Dictionary
+        winner = max(poll, key=poll.get)
 
         # Printing in terminal
+        print('------------------------')
         print('!!! ELECTION RESULTS !!!')
         print('------------------------')
         print(f'Total Votes: {voter_count}')
         print('------------------------')
-        print(f'Votes for Khan: {khan_percent} [{khan_count}]')
-        print(f'Votes for Correy: {correy_percent} [{correy_count}]')
-        print(f'Votes for Li: {li_percent} [{li_count}]')
-        print(f'Votes for O\'Tooley: {tooley_percent} [{tooley_count}]')
+        for i in range(0,4): 
+            print(f'Votes for {candidates[i]}: {percents[i]} ({votes[i]})')
         print('------------------------')
-        #print(f'The winner is... {winner}')
+        print(f'The winner is... {winner}')
 
     # Print to txt file
     csvwriter = csv.writer(writetxt, delimiter = ' ')
     csvwriter.writerow(['ELECTION','RESULTS'])
     csvwriter.writerow(['---------------------'])
-    csvwriter.writerow(['Votes','for','Khan:',khan_percent, [khan_count]])
-    csvwriter.writerow(['Votes','for','Correy:',correy_percent, [correy_count]])
-    csvwriter.writerow(['Votes','for','Li:',li_percent, [li_count]])
-    csvwriter.writerow(['Votes','for','O\'Tooley:',tooley_percent, [tooley_count]])
+    csvwriter.writerow(['Total','Votes:',voter_count])
+    for i in range(0,4):
+        csvwriter.writerow(['Votes','for',candidates[i],':', percents[i], [votes[i]]])
     csvwriter.writerow(['---------------------'])
-    csvwriter.writerow(['The','Winner','Is','...'])
+    csvwriter.writerow(['The','Winner','Is','...',winner])
