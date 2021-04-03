@@ -17,17 +17,10 @@ with open(output_path, 'w', newline='') as writetxt:
         #print(f"CSV Header: {csv_header}")
         
         # Set variables
-        net_total = 0.0
+        net_total, net_change, max_change, min_change = 0.0, 0.0, 0.0, 0.0
         month_count = 0
-        net_change = 0.0
-        max_change = 0.0
-        min_change = 0.0
-        max_month = ''
-        min_month = ''
-        average_change = []
-        monthly_profits = []
-        greatest = []
-        lowest = []
+        max_month, min_month = '', ''
+        average_change, monthly_profits, greatest, lowest = [], [], [], []
 
         # Iterate through each row in csv file.
         for row in csvreader:
@@ -52,8 +45,6 @@ with open(output_path, 'w', newline='') as writetxt:
         greatest.append(max_change)
         lowest.append(min_month)
         lowest.append(min_change)
-        financialdata = {"Greatest Increase":greatest, "Greatest Decrease":lowest}
-        print(financialdata)
 
         # Average Change
         average_change = net_total / month_count
