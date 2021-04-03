@@ -24,10 +24,8 @@ with open(output_path, 'w', newline='') as writetxt:
         min_change = 0.0
         max_month = ''
         min_month = ''
-        average_change = []
+        average_change = 0.0
         monthly_profits = []
-        greatest = []
-        lowest = []
 
         # Iterate through each row in csv file.
         for row in csvreader:
@@ -47,26 +45,17 @@ with open(output_path, 'w', newline='') as writetxt:
                     min_change = net_change
                     min_month = row[0]
         
-        # Store values in lists
-        greatest.append(max_month)
-        greatest.append(max_change)
-        lowest.append(min_month)
-        lowest.append(min_change)
-        financialdata = {"Greatest Increase":greatest, "Greatest Decrease":lowest}
-        print(financialdata)
-
         # Average Change
         average_change = net_total / month_count
 
         # Printing
-        print("---------------------------------")
         print("Financial Analysis of My Company")
-        print("---------------------------------")
+        print("_______________________________")
         print(f"Total Months: {month_count}")
         print("Total Profits: ${:.2f}".format(net_total))
         print("Average Change: ${:.2f}".format(average_change))
-        print(f"Greatest Increase in Profits: {greatest[0]} (${greatest[1]})")
-        print(f"Greatest Decrease in Profits: {lowest[0]} (${lowest[1]})")
+        print(f"Greatest Increase in Profits: {max_month} (${max_change})")
+        print(f"Greatest decrease in Profits: {min_month} (${min_change})")
 
     # Write to a text file
     csvwriter = csv.writer(writetxt, delimiter = ' ')
