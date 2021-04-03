@@ -18,7 +18,8 @@ with open(output_path, 'w', newline='') as writetxt:
         # Initialize Variables
         voter_count = 0
         poll = {}
-        
+        poll_results = {}
+
         # Iterate through each row in csv file.
         for row in csvreader:
             voter_count += 1 
@@ -38,6 +39,10 @@ with open(output_path, 'w', newline='') as writetxt:
             candidates.append(key)
             votes.append(value)
             percents.append("{:.2%}".format(value/voter_count))
+        
+        # Store in a dictionary
+        poll_results = {"Candidates":candidates,"Votes":votes,"Percents,":percents}
+        print(poll_results)
 
         # Calculate winner based on max number of votes in the Dictionary
         winner = max(poll, key=poll.get)
