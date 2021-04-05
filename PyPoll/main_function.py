@@ -12,6 +12,7 @@ votes = []
 percents = []
 winner = []
 
+# Function to do all of calculations for the poll data
 def poll_calc():
     voter_count = 0
     poll = {}
@@ -39,14 +40,15 @@ def poll_calc():
 
     return candidates, percents, votes, winner, poll_results
 
+# Main logic in script to pull the csv data and send it to function
 with open(output_path, 'w', newline='') as writetxt:
     with open(csvpath) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
 
-        # Print Header and Data for sanity check
+        # Skip Header in data set
         csv_header = next(csvreader)
 
-        # Iterate through each row in csv file.
+        # Call poll function to do all calculations and return lists/dictionaries with results
         poll_calc()
         
     # Printing in terminal
