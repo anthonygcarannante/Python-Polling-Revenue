@@ -6,16 +6,19 @@ import os
 csvpath = os.path.join('Resources','election_data.csv')
 output_path = os.path.join('Analysis','Election_Results_function.txt')
 
+# Initialize Variables
+voter_count = 0
+poll = {}
+poll_results = {}
+
 # Store all of these values into lists for easy accessing
 candidates = []
 votes = []
 percents = []
 winner = []
 
-# Function to do all of calculations for the poll data
 def poll_calc():
     voter_count = 0
-    poll = {}
 
     for row in csvreader:
         voter_count += 1
@@ -38,17 +41,16 @@ def poll_calc():
     winner.append(max(poll, key=poll.get))
     winner.append(voter_count)
 
-    return candidates, percents, votes, winner, poll_results
+    return candidates, percents, votes, winner
 
-# Main logic in script to pull the csv data and send it to function
 with open(output_path, 'w', newline='') as writetxt:
     with open(csvpath) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
 
-        # Skip Header in data set
+        # Print Header and Data for sanity check
         csv_header = next(csvreader)
 
-        # Call poll function to do all calculations and return lists/dictionaries with results
+        # Iterate through each row in csv file.
         poll_calc()
         
     # Printing in terminal
