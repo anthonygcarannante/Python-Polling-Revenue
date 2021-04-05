@@ -1,0 +1,9 @@
+ELECTION RESULTS
+---------------------
+Total Votes: 3521001
+Votes for Khan : 63.00% [2218231]
+Votes for Correy : 20.00% [704200]
+Votes for Li : 14.00% [492940]
+Votes for O'Tooley : 3.00% [105630]
+---------------------
+The Winner Is ... Khan
