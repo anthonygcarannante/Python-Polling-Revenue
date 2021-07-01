@@ -17,3 +17,4 @@ The PyBank directory also has a main.py file that read in a csv file of a compan
 ![Screen Shot 2021-07-01 at 11 26 12 AM](https://user-images.githubusercontent.com/79670978/124150024-27d5bf80-da5f-11eb-8803-088224dbb3bc.png)
 
 AGC 01JUL2021
+e: anthonygcarannante@gmail.com
