@@ -1,4 +1,4 @@
-# Python-Challenge
+# Python-Polling-Revenue
 
 This repository is to showcase my python skills for creating basic applications that involve using python libraries and general programming concepts.
 
